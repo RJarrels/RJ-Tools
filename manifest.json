@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "RJ Quick Tools",
+  "version": "1.0",
+  "action": {
+    "default_popup": "rjtools.html"
+  },
+  "permissions": ["scripting", "activeTab", "windows"],
+  "host_permissions": ["<all_urls>"],
+  "incognito": "spanning"
+}
