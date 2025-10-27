@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         chrome.windows.create({
           url: "https://www.google.com",
-          incognito: true
+          incognito: true,
+          state: "normal",
         });
       });
     });

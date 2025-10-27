@@ -7,5 +7,5 @@
   },
   "permissions": ["scripting", "activeTab", "windows"],
   "host_permissions": ["<all_urls>"],
-  "incognito": "spanning"
+  "incognito": "split"
 }
