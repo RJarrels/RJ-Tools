@@ -1,5 +1,5 @@
 html {
-    width: 200px;
+    width: 250px;
     padding: 10px;
     background: linear-gradient(to bottom, rgb(0, 112, 168)0%, rgb(45, 45, 45)45%);
     color: #fff;
@@ -17,9 +17,13 @@ ul {
     padding: 0;
 }
 button {
-    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
     padding: 10px;
-    margin-top: 10px;
+     margin: 10px auto;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     border: none;
