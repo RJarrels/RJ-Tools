@@ -1,4 +1,4 @@
-<h1>Quick tools<h1>: is a toolbox allowing workers at iFIT to simplify repetative processes in their chrome browser windows to reduce repetative tasks.
+<h3>Quick tools</h3>: is a toolbox allowing workers at iFIT to simplify repetative processes in their chrome browser windows to reduce repetative tasks.
 Current tools in Quick Tools is:
  <ul>
 <li>Bypass Vercel: This puts in the password and clicks unlock for you so you don't have to type it in every time. </li>
