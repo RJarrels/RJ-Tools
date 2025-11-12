@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         componenthighlighter.style.border = "2px solid red";
                         componenthighlighter.style.backgroundColor = "rgba(0, 210, 252, 0.15)";
                         componenthighlighter.style.pointerEvents = "none";
-                        componenthighlighter.style.transition = "all 2s ease";
+
                         // Sets the size and position of the highlighter and allows for scrolling
                         const rect = component.getBoundingClientRect();
                         componenthighlighter.style.top = (rect.top + window.scrollY) + "px";
@@ -94,8 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         componentName.style.left = (rect.left + window.scrollX + 15) + "px";
                         componentName.style.zIndex = "10000";
 
+                        // appends the elements to the body
                         document.body.appendChild(componenthighlighter);
                         document.body.appendChild(componentName);
+
                         // Animation for highlighting components
                         let components = document.querySelectorAll('.component-highlighter, .component-name-label');
                         components.forEach(el => el.animate([
@@ -158,3 +160,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 });
+// Created by Reece Jarrels for RJ-Tools Extension 10/2025
