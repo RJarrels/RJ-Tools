@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         componenthighlighter.style.height = rect.height + "px";
                         componenthighlighter.style.zIndex = "9999";
 
-                        // componentName styles and positions
+                        // component label styles and positions
                         componentName.innerText = component.className;
                         componentName.style.position = "absolute";
                         componentName.style.backgroundColor = "rgba(246, 255, 0, 0.7)";
@@ -96,6 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         document.body.appendChild(componenthighlighter);
                         document.body.appendChild(componentName);
+                        // Animation for highlighting components
+                        let components = document.querySelectorAll('.component-highlighter, .component-name-label');
+                        components.forEach(el => el.animate([
+                            { 
+                              transform: 'scale(0,1)',
+                              opacity: 0 ,
+                              transformOrigin: 'center'
+                            },
+
+                            { 
+                              transform: 'scale(1,1)',
+                              opacity: 1,
+                              transformOrigin: 'center'
+                            }
+                        ], {
+                            duration: 500,
+                            fill: 'forwards'
+                        }));
                     }
                 } else {
                     alert("No Components Found");
@@ -111,11 +129,26 @@ document.addEventListener('DOMContentLoaded', () => {
             target: { tabId: tab.id },
             func: () => {
               let components = document.querySelectorAll('.component-highlighter, .component-name-label');
-                  components.forEach(el => el.remove());
-                }
-              });
+                  components.forEach(el => el.animate([
+                      { 
+                        transform: 'scale(1,1)',
+                        opacity: 1,
+                        transformOrigin: 'center'
+                      },
+                      { 
+                        transform: 'scale(0,1)',
+                        opacity: 0 ,
+                        transformOrigin: 'center'
+                      }
+                  ], {
+                      duration: 500,
+                      fill: 'forwards'
+                    }
+                  ).onfinish = () => el.remove());
+            }
+          });
       });
-      
+
       // will close the scanner content
       document.getElementById("closeScannerBtn").addEventListener("click", () => {
         scannerContent.innerHTML = "";
@@ -123,6 +156,5 @@ document.addEventListener('DOMContentLoaded', () => {
         newIncog.style.display = 'flex';
         bypassVercel.style.display = 'flex';
       });
-    
     });
 });
