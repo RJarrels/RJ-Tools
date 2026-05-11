@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // will scan the current page for components and highlight them with a label
       document.getElementById("scanBtn").addEventListener("click", async () => {
         await executeInActiveTab(() => {
-                let components = document.querySelectorAll('[data-clsp]');
+                let components = document.querySelectorAll('[data-cslp]');
                 console.log(components);
                 if (components.length !== 0) {
                     // Prevent creating highlighters more than once
@@ -111,13 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
                           componenthighlighter.style.zIndex = "9999";
 
                           // componentName styles and positions
-                          componentName.innerText = component.dataset.clsp || 'Unnamed Component';
+                          componentName.innerText = component.dataset.cslp || 'Unnamed Component';
+                          componentName.style.fontSize = "30px";
                           componentName.style.position = "absolute";
                           componentName.style.backgroundColor = "rgba(246, 255, 0, 0.7)";
-                          componentName.style.padding = "3px";
+                          componentName.style.padding = "10px";
                           componentName.style.top = (rect.top + window.scrollY + 15) + "px";
                           componentName.style.left = (rect.left + window.scrollX + 15) + "px";
-                          componentName.style.zIndex = "10000";
+                          componentName.style.zIndex = "100000";
 
                           document.body.appendChild(componenthighlighter);
                           document.body.appendChild(componentName);
