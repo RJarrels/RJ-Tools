@@ -7,13 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
   // These functions are to quicken processes down below 
-
   // hides the main buttons
   function hideMainButtons() {
     componentScanner.style.display = 'none';
     newIncog.style.display = 'none';
     bypassVercel.style.display = 'none';
-    openAllCountries.style.display = 'none';
+    // openAllCountries.style.display = 'none';
   }
 
   // shows the main buttons
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     componentScanner.style.display = 'flex';
     newIncog.style.display = 'flex';
     bypassVercel.style.display = 'flex';
-    openAllCountries.style.display = 'flex';
+    // openAllCountries.style.display = 'flex';
   }
 
   // Utility function to execute a script in the active tab
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       func: func
     });
   }
-
+  //----------------------------------------------------------------------------------
   // when bypass vercel button is clicked, execute script to fill password and click unlock
   bypassVercel.addEventListener('click', async () => {
     await executeInActiveTab(() => {
@@ -78,40 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
       else {
         alert("Scanner is already open");
       }
-
-      openAllCountries.addEventListener("click", () => {
-        hideMainButtons();
-        if(replacedContent !== true) {
-          let replacedContent = true;
-          let container = document.createElement("div");
-          let instructions = document.createElement("p");
-          let closeBtn = document.createElement("button");
-          let ntButton = document.createElement("button");
-          let pfButton = document.createElement("button");
-
-          instructions.textContent = "This will open all country links on the current page in new tabs. Which would you like to open?";
-          closeBtn.textContent = "Close";
-          ntButton.textContent = "Nordictrack";
-          pfButton.textContent = "Proform";
-
-          container.appendChild(instructions);
-          container.appendChild(ntButton);
-          container.appendChild(pfButton);
-          container.appendChild(closeBtn);
-     
-          contentChange.appendChild(container);
-        }
-        else {
-          alert("Countries are already opened");
-        }
-      });
-          
-
-
+      
       // will scan the current page for components and highlight them with a label
       document.getElementById("scanBtn").addEventListener("click", async () => {
         await executeInActiveTab(() => {
-               let components = document.querySelectorAll('[class*="chakra-container"]');
+                let components = document.querySelectorAll('[data-clsp]');
+                console.log(components);
                 if (components.length !== 0) {
                     // Prevent creating highlighters more than once
                     if (document.querySelector('.component-highlighter')) {
@@ -140,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           componenthighlighter.style.zIndex = "9999";
 
                           // componentName styles and positions
-                          componentName.innerText = component.className;
+                          componentName.innerText = component.dataset.clsp || 'Unnamed Component';
                           componentName.style.position = "absolute";
                           componentName.style.backgroundColor = "rgba(246, 255, 0, 0.7)";
                           componentName.style.padding = "3px";
@@ -152,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
                           document.body.appendChild(componentName);
 
                             // Animation for highlighting components
-                          let components = document.querySelectorAll('.component-highlighter, .component-name-label');
-                          components.forEach(el => el.animate([
+                          let highlightElements = document.querySelectorAll('.component-highlighter, .component-name-label');
+                          highlightElements.forEach(el => el.animate([
                               { 
                                 transform: 'scale(0,1)',
                                 opacity: 0 ,
@@ -186,8 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
           else {
-               let components = document.querySelectorAll('.component-highlighter, .component-name-label');
-                  components.forEach(el => el.animate([
+               let highlightElements = document.querySelectorAll('.component-highlighter, .component-name-label');
+                  highlightElements.forEach(el => {
+                    const animation = el.animate([
                       { 
                         transform: 'scale(1,1)',
                         opacity: 1,
@@ -198,11 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         opacity: 0 ,
                         transformOrigin: 'center'
                       }
-                  ], {
+                    ], {
                       duration: 500,
                       fill: 'forwards'
-                    }
-                  ).onfinish = () => el.remove());
+                    });
+                    animation.onfinish = () => el.remove();
+                  });
                 }
             })
       });
