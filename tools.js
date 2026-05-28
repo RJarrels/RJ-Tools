@@ -1,10 +1,11 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 	const newIncog = document.getElementById("newIncogButton");
 	const bypassVercel = document.getElementById("bypassButton");
 	const componentScanner = document.getElementById("componentScanner");
 	const contentChange = document.getElementById("contentChange");
 	const openAllCountries = document.getElementById("openAllCountries");
-
+	const bypassCode = import.meta.env.VITE_VERCEL_BYPASS_PASSWORD;
 	// These functions are to quicken processes down below
 	// hides the main buttons
 	function hideMainButtons() {
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				alert("Password input or unlock button not found!");
 				return;
 			} else {
-				passInput.value = "f1Tness*84321";
+				passInput.value = bypassCode	;
 				unlockButton.click();
 			}
 		});
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (contentChange.innerHTML === "") {
 
 			const container = document.createElement("div");
-      container.id = "scannerContainer";
+      		container.id = "scannerContainer";
 		
 			const hr = document.createElement("hr");
 
@@ -117,9 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 							const componentName = document.createElement("h4");
 							componentName.classList.add("component-name-label");
 							componenthighlighter.style.position = "absolute";
-							componenthighlighter.style.border = "2px solid red";
+							componenthighlighter.style.border = "2px solid rgb(252, 0, 0)";
 							componenthighlighter.style.backgroundColor =
-								"rgba(0, 210, 252, 0.15)";
+								"rgba(0, 170, 255, 0.4)";
 							componenthighlighter.style.pointerEvents = "none";
 							componenthighlighter.style.transition = "all 2s ease";
 							// Sets the size and position of the highlighter and allows for scrolling
@@ -133,13 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 							// componentName styles and positions
 							componentName.innerText =
-								component.dataset.cslp || "Unnamed Component";
-							componentName.style.fontSize = "30px";
+								component.dataset.cslp.split(".")[0] || "Unnamed Component";
+							componentName.style.fontSize = "20px";
+							componentName.style.color = "white";
+							componentName.style.textAlign = "center";
 							componentName.style.position = "absolute";
-							componentName.style.backgroundColor = "rgba(246, 255, 0, 0.7)";
-							componentName.style.padding = "10px";
-							componentName.style.top = rect.top + window.scrollY + 15 + "px";
-							componentName.style.left = rect.left + window.scrollX + 15 + "px";
+							componentName.style.backgroundColor = "rgba(41, 41, 41, 0.8)";
+							componentName.style.padding = "5px";
+							componentName.style.top = rect.top + window.scrollY + 0 + "px";
+							componentName.style.left = rect.left + window.scrollX + 0 + "px";
 							componentName.style.zIndex = "100000";
 
 							document.body.appendChild(componenthighlighter);
