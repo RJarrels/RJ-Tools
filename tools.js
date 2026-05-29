@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 	const newIncog = document.getElementById("newIncogButton");
 	const bypassVercel = document.getElementById("bypassButton");
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				alert("Password input or unlock button not found!");
 				return;
 			} else {
-				passInput.value = bypassCode	;
+				passInput.value = bypassCode;
 				unlockButton.click();
 			}
 		});
@@ -68,10 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	componentScanner.addEventListener("click", () => {
 		hideMainButtons();
 		if (contentChange.innerHTML === "") {
-
 			const container = document.createElement("div");
-      		container.id = "scannerContainer";
-		
+			container.id = "scannerContainer";
+
 			const hr = document.createElement("hr");
 
 			const p = document.createElement("p");
