@@ -9,17 +9,19 @@ Current tools in Quick Tools inlcude:
 <p>
 In your terminal.....
 # 1. Install all required dependencies (including Vite)
-- <b>npm install</b>
+<li><b>npm install</b></li>
 
 #2. Build the extension and generate the 'dist' folder
-- <b>npm run build</b>
+<li><b>npm run build</b></li>
 
 </p>
 <p>To add the extension to your google chrome:
-- Open Google Chrome and go to chrome://extensions/.
-- Turn on Developer mode (top-right toggle).
-- Click Load unpacked (top-left button).
-- Select the dist folder inside your repository.
+  <ul>
+    <li>Open Google Chrome and go to chrome://extensions/.</li>
+    <li>Turn on Developer mode (top-right toggle).</li>
+    <li>Click Load unpacked (top-left button).</li>
+    <li>Select the <b>dist</b> folder inside your repository.</li>
+  </ul>
 </p>
 <p> Lastly, in the root directory, create a file named .env and in this file add this variable ( <b>VITE_VERCEL_BYPASS_PASSWORD=passwordHere</b> ) and enter the Vercel Password. 
 </p>
